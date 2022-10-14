@@ -1,17 +1,16 @@
 import {IFizzBuzz} from "./IFizzBuzz";
+import { IComputeFizz } from "./IComputeFizz";
 
 export class FizzBuzz implements IFizzBuzz {
-    public say(inputNumber: number): string {
-        if (inputNumber % 3 === 0 && inputNumber % 5 === 0) {
-            return "FizzBuzz";
-        }
-        if (inputNumber % 3 === 0) {
-            return "Fizz";
-        }
-        if (inputNumber % 5 === 0) {
-            return "Buzz";
-        }
+    private computeFizz: IComputeFizz;
 
-        return String(inputNumber);
+    constructor(computeFizz: IComputeFizz) {
+       this.computeFizz = computeFizz
+    }
+
+    public say(inputNumber: number): string {
+       return this.computeFizz.compute(inputNumber);
     }
 }
+
+

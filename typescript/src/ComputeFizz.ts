@@ -1,17 +1,23 @@
 import { IComputeFizz } from "./IComputeFizz";
 
 export class ComputeFizz implements IComputeFizz {
-  compute(inputNumber: number): string {
-    if (inputNumber % 3 === 0 && inputNumber % 5 === 0) {
-      return "FizzBuzz";
-    }
-    if (inputNumber % 3 === 0) {
-      return "Fizz";
-    }
-    if (inputNumber % 5 === 0) {
-      return "Buzz";
-    }
 
-    return String(inputNumber);
+  private readonly matchNumber: number;
+  private readonly outputString : string;
+  
+  constructor(matchNumber: number ,outputString: string) {
+    this.matchNumber = matchNumber;
+    this.outputString = outputString;
+  }
+
+  compute(inputNumber: number): string {
+    if(inputNumber % this.matchNumber === 0 )
+      return this.outputString;
+
+    return "";
+  }
+
+  isMatch(inputNumber: number):boolean {
+    return (inputNumber % this.matchNumber === 0);
   }
 }
